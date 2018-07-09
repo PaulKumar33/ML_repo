@@ -40,13 +40,41 @@ class VectorMath:
 
         return vector
 
+    def AvgPool(self, matrix, size, pooltype='max'):
+        size = size
+        matSize = np.shape(matrix)
+        print(matSize)
+        poolSize = (matSize[0]-size+1,matSize[0]-size+1)
+        newMat = np.zeros(poolSize)
+        print(newMat)
+        if(pooltype=='max'):
+            for index1 in range(len(matrix)-1):
+                for index2 in range(len(matrix)-1):
+                    subMatrix = matrix[index1:index1+size,index2:index2+size]
+                    print(subMatrix)
+                    maximum = np.max(subMatrix)
+                    newMat[index1,index2] = maximum
+        if(pooltype=='avg'):
+            for index1 in range(len(matrix)-1):
+                for index2 in range(len(matrix)-1):
+                    subMatrix = matrix[index1:index1+size,index2:index2+size]
+                    print(subMatrix)
+                    maximum = np.mean(subMatrix)
+                    newMat[index1,index2] = maximum
+        return newMat
 
 
 if __name__ == "__main__":
     vect = VectorMath()
     vectorEle = [1,2,-3,4,5,-6]
+    matrix = np.matrix([[1,1,4,2,3],
+                        [1,2,9,4,6],
+                        [0,2,2,3,0],
+                        [8,8,1,2,3],
+                        [5,4,7,6,1]])
     print(vect.VectorMean(vector=vectorEle))
     print(vect.VectorVariance(vectorEle))
     print(np.var(vectorEle))
     print(vect.Activation(vectorEle, "tanh"))
+    print(vect.AvgPool(matrix,2,'avg'))
 

@@ -1,0 +1,26 @@
+%correlation between two matrics
+imText = 'redEyeTreeFrog.jpg'
+image = imread(imText);
+image = image(:,:,2);
+
+
+%calculating the sigmoid activation
+exponential1 = (image);
+%exponential = int(exponential);
+den = 1+exp(exponential1);
+sizeMat = size(exponential1);
+sigmoid = zeros(size(exponential1));
+for i=1:sizeMat(1)
+    for y=1:sizeMat(2)
+        
+end
+
+sigmoid = 1./den;
+
+%tanh activation function
+exponential2 = -2*(image);
+den = 1+exp(double(exponential));
+tanh = 2./den;
+
+corrAB = corr2(uint8(tanh), uint8(sigmoid));
+

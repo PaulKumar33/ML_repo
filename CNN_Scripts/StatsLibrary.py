@@ -77,4 +77,6 @@ if __name__ == "__main__":
     print(np.var(vectorEle))
     print(vect.Activation(vectorEle, "tanh"))
     print(vect.AvgPool(matrix,2,'avg'))
+    different = vect.AvgPool(matrix,2,'avg') - vect.AvgPool(matrix,2,'max')
+    print(different)
 

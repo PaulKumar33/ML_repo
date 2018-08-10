@@ -52,3 +52,15 @@ plt.xlabel("epochs")
 plt.ylabel('Loss')
 plt.legend()
 plt.show()
+
+'''try other architectures'''
+model2 = models.Sequential()
+model2.add(layers.Dense(32, activation='relu', input_shape=(10000,)))
+model2.add(layers.Dense(32, activation='relu'))
+model2.add(layers.Dense(1, activation='sigmoid'))
+model2.compile(optimizer='rmsprop', loss='binary_crossentropy',
+              metrics=['accuracy'])
+history = model2.fit(partial_x_train, partial_y_train,
+                    epochs=20, batch_size=512,
+                    validation_data=(x_val, y_val))
+
